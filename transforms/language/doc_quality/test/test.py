@@ -17,7 +17,7 @@ from data_processing.test_support.transform.table_transform_test import (
     AbstractTableTransformTest,
 )
 from data_processing.transform import get_transform_config
-from doc_quality_transform import DocQualityTransform, DocQualityTransformConfiguration
+from dpk_doc_quality.transform import DocQualityTransform, DocQualityTransformConfiguration
 
 
 class TestDocQualityTransform(AbstractTableTransformTest):
@@ -34,7 +34,7 @@ class TestDocQualityTransform(AbstractTableTransformTest):
             "--docq_doc_content_column",
             "contents",
             "--docq_bad_word_filepath",
-            os.path.join(basedir, "ldnoobw", "en"),
+            os.path.join(basedir, "dpk_doc_quality", "ldnoobw", "en"),
         ]
         transformConfig = DocQualityTransformConfiguration()
         config = get_transform_config(transformConfig, cli)

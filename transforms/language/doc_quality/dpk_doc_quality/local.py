@@ -13,7 +13,7 @@
 import os
 
 from data_processing.data_access import DataAccessLocal
-from doc_quality_transform import (
+from dpk_doc_quality.transform import (
     DocQualityTransform,
     bad_word_filepath_key,
     doc_content_column_key,

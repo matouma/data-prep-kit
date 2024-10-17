@@ -31,6 +31,8 @@ publish-image:: .transforms.publish-image-ray
         
 test-image:: .transforms.ray-test-image
 
+set-versions::
+
 build:: 
 	# First build wheel for library
 	make -C $(REPOROOT)/data-processing-lib build-pkg-dist

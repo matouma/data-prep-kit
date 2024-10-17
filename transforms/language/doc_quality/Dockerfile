@@ -14,6 +14,8 @@ RUN pip install --no-cache-dir pytest
 COPY --chown=ray:users lib-dist/${WHL_FILE_NAME} dist/
 RUN pip install dist/${WHEEL_FILE_NAME}[ray]
 
+COPY --chown=ray:users requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 COPY --chown=ray:users dpk_${TRANSFORM_NAME}/ dpk_${TRANSFORM_NAME}/
 
 # copy some of the samples in

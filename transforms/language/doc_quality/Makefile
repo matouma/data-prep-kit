@@ -22,3 +22,31 @@ TRANSFORM_NAME=$(shell basename `pwd`)
 
 
 
+#####################################################################################
+### Example how developes can use the framework to setup the environment 
+### and do their own testing. The virtual environement venv can further be customized
+### and tailored to their need
+run-cli-sample:
+	$(MAKE) .transforms.python-venv
+	source venv/bin/activate && \
+	$(PYTHON) -m dpk_doc_quality.transform_python \
+		--data_local_config "{ 'input_folder' : '../test-data/input', 'output_folder' : '../output'}" \
+           --docq_text_lang \"en\"	\
+		   --docq_doc_content_column \"contents\"	\
+		   --docq_bad_word_filepath \"../ldnoobw/en\"
+
+
+run-cli-sample-ray: 
+	$(MAKE) .transforms.ray-venv
+	source venv/bin/activate && \
+	$(PYTHON) -m dpk_doc_quality.ray.transform \
+		--data_local_config "{ 'input_folder' : '../test-data/input', 'output_folder' : '../output'}" \
+           --docq_text_lang \"en\"	\
+		   --docq_doc_content_column \"contents\"	\
+		   --docq_bad_word_filepath \"../ldnoobw/en\"
+
+
+run-cli-local-ray: 
+	$(MAKE) .transforms.ray-venv
+	source venv/bin/activate && \
+	$(PYTHON) -m dpk_doc_quality.ray.local
